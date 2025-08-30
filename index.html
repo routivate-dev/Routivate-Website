@@ -90,8 +90,8 @@
 
         <section id="about" class="section" data-title="About Us">
             <div class="container">
-                <h2>About Us</h2>
-                <p class="muted">
+                <h2 class="section-heading">About Us</h2>
+                <p class="section-subheading">
                     Routivate is your full-stack digital partner. We craft product-grade web experiences,
                     build robust e-commerce platforms, deploy secure cloud infrastructure, and guide
                     enterprise architecture decisions that stand the test of scale.
@@ -101,9 +101,12 @@
 
         <section id="services" class="section" data-title="Services">
             <div class="container">
-                <h2>Our Services</h2>
+                <h2 class="section-heading">Our Services</h2>
+                <p class="section-subheading">
+                    We offer a comprehensive suite of IT services designed to drive your business forward.
+                </p>
                 <div class="grid-3">
-                    <article class="card service-card">
+                    <article class="service-card">
                         <img src="images/webdesign.jpg" alt="Website Design" class="service-icon" />
                         <h3>Website Design & Development</h3>
                         <p>Modern, fast, responsive sites tailored to your brand and goals.</p>
@@ -112,7 +115,7 @@
                             <span class="progress-text">95% Client Satisfaction</span>
                         </div>
                     </article>
-                    <article class="card service-card">
+                    <article class="service-card">
                         <img src="images/security.jpg" alt="Cloud & Cybersecurity" class="service-icon" />
                         <h3>Cloud & Cybersecurity</h3>
                         <p>Scale confidently with secure, cost-optimized cloud architectures.</p>
@@ -121,7 +124,7 @@
                             <span class="progress-text">98% Security Rating</span>
                         </div>
                     </article>
-                    <article class="card service-card">
+                    <article class="service-card">
                         <img src="images/digitalmarketing.jpg" alt="Digital Growth" class="service-icon" />
                         <h3>Digital Growth</h3>
                         <p>SEO, paid campaigns, analytics, and performance optimization.</p>
@@ -136,7 +139,10 @@
 
         <section id="testimonials" class="section" data-title="Testimonials">
             <div class="container">
-                <h2>Client Testimonials</h2>
+                <h2 class="section-heading">Client Testimonials</h2>
+                <p class="section-subheading">
+                    Hear directly from our satisfied clients about how Routivate has helped them achieve their goals.
+                </p>
                 <div class="testimonials-carousel">
                     <div class="testimonial active">
                         <article class="card">
@@ -169,7 +175,10 @@
 
         <section id="portfolio" class="section" data-title="Portfolio Highlights">
             <div class="container">
-                <h2>Our Portfolio</h2>
+                <h2 class="section-heading">Our Portfolio</h2>
+                <p class="section-subheading">
+                    Explore some of our recent projects and see the impact we've made for our clients.
+                </p>
                 <div class="grid-3">
                     <article class="card">
                         <h3>E-commerce Platform</h3>
@@ -190,22 +199,46 @@
 
         <section id="pricing" class="section" data-title="Price Plans">
             <div class="container">
-                <h2>Price Plans</h2>
-                <p>Explore our pricing options to find the perfect fit for your business.</p>
+                <h2 class="section-heading">Price Plans</h2>
+                <p class="section-subheading">
+                    Explore our flexible pricing options designed to fit businesses of all sizes.
+                </p>
+                <!-- You might want to add some pricing cards here if you have them -->
             </div>
         </section>
 
         <section id="contact" class="section" data-title="Contact Us">
             <div class="container">
-                <h2>Contact Us</h2>
-                <p class="muted">Share your details and we’ll get back within 1 business day.</p>
+                <h2 class="section-heading">Contact Us</h2>
+                <p class="section-subheading">Share your details and we’ll get back within 1 business day.</p>
                 <form id="contactForm" class="form">
-                    <input type="text" id="name" placeholder="Your Name" required />
-                    <input type="email" id="email" placeholder="Your Email" required />
-                    <input type="text" id="mobile" placeholder="Mobile Number" required />
-                    <textarea id="message" rows="4" placeholder="Tell us about your project"></textarea>
-                    <button type="submit" class="btn primary">Send Message</button>
-                    <p id="formMessage" class="muted"></p>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder=" " required />
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder=" " required />
+                            <label for="email">Your Email</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="mobile" placeholder=" " required />
+                        <label for="mobile">Mobile Number</label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder=" "></textarea>
+                        <label for="message">Tell us about your project</label>
+                    </div>
+
+                    <button type="submit" class="btn primary">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading" style="display: none;">Sending...</span>
+                    </button>
+
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
                 </form>
             </div>
         </section>
