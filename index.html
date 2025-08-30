@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Routivate - Modern IT Solutions</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="bg-layer"></div>
+    <div id="route-overlay" aria-hidden="true">
+        <div class="route-logo">Routivate ⚡</div>
+    </div>
+
+    <header class="navbar">
+        <div class="brand">Routivate</div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+        
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-right">
+                    <li><a class="nav-link active" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="services.html">Services</a></li>
+                    <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                    <li><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li><a class="nav-link" href="about.html">About Us</a></li>
+                    <li><a class="nav-link" href="pricing.html">Price Plans</a></li>
+                    <li><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="section hero" data-title="Home">
+            <div class="hero-background">
+                <div class="hero-particles"></div>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="display animate-text" data-animation="fadeInUp" data-delay="0.2s">
+                        Welcome to <span class="accent">Routivate</span>
+                    </h1>
+                    <p class="lead animate-text" data-animation="fadeInUp" data-delay="0.4s">
+                        Empowering businesses with modern, scalable IT solutions.
+                    </p>
+                    <div class="hero-actions animate-text" data-animation="fadeInUp" data-delay="0.6s">
+                        <a href="#services" class="btn primary hero-btn">
+                            <span class="btn-text">Explore Services</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                        <a href="#contact" class="btn secondary hero-btn">
+                            <span class="btn-text">Get Started</span>
+                            <span class="btn-icon">📧</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats animate-text" data-animation="fadeInUp" data-delay="0.8s">
+                        <div class="stat">
+                            <span class="stat-number" data-count="150">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="98">0</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="5">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section" data-title="About Us">
+            <div class="container">
+                <h2>About Us</h2>
+                <p class="muted">
+                    Routivate is your full-stack digital partner. We craft product-grade web experiences,
+                    build robust e-commerce platforms, deploy secure cloud infrastructure, and guide
+                    enterprise architecture decisions that stand the test of scale.
+                </p>
+            </div>
+        </section>
+
+        <section id="services" class="section" data-title="Services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="grid-3">
+                    <article class="card service-card">
+                        <img src="images/webdesign.jpg" alt="Website Design" class="service-icon" />
+                        <h3>Website Design & Development</h3>
+                        <p>Modern, fast, responsive sites tailored to your brand and goals.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-progress="95"></div>
+                            <span class="progress-text">95% Client Satisfaction</span>
+                        </div>
+                    </article>
+                    <article class="card service-card">
+                        <img src="images/security.jpg" alt="Cloud & Cybersecurity" class="service-icon" />
+                        <h3>Cloud & Cybersecurity</h3>
+                        <p>Scale confidently with secure, cost-optimized cloud architectures.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-progress="98"></div>
+                            <span class="progress-text">98% Security Rating</span>
+                        </div>
+                    </article>
+                    <article class="card service-card">
+                        <img src="images/digitalmarketing.jpg" alt="Digital Growth" class="service-icon" />
+                        <h3>Digital Growth</h3>
+                        <p>SEO, paid campaigns, analytics, and performance optimization.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-progress="92"></div>
+                            <span class="progress-text">92% ROI Improvement</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section" data-title="Testimonials">
+            <div class="container">
+                <h2>Client Testimonials</h2>
+                <div class="testimonials-carousel">
+                    <div class="testimonial active">
+                        <article class="card">
+                            <h4>John Davis</h4>
+                            <p>"Routivate transformed our e-commerce platform. Their team delivered exceptional results, improving our load times by 60% and increasing conversions by 35%."</p>
+                        </article>
+                    </div>
+                    <div class="testimonial">
+                        <article class="card">
+                            <h4>Sarah Mitchell</h4>
+                            <p>"The cybersecurity implementation by Routivate was outstanding. They helped us achieve HIPAA compliance and implemented robust security measures."</p>
+                        </article>
+                    </div>
+                    <div class="testimonial">
+                        <article class="card">
+                            <h4>Michael Rodriguez</h4>
+                            <p>"Routivate built our educational platform from scratch. Their attention to detail and user experience design resulted in a platform that our students love."</p>
+                        </article>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-prev">←</button>
+                        <button class="carousel-next">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section" data-title="Portfolio Highlights">
+            <div class="container">
+                <h2>Our Portfolio</h2>
+                <div class="grid-3">
+                    <article class="card">
+                        <h3>E-commerce Platform</h3>
+                        <p>Built a scalable e-commerce platform processing 10,000+ daily transactions.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Healthcare SaaS</h3>
+                        <p>Developed a HIPAA-compliant patient management system serving 50+ healthcare facilities.</p>
+                    </article>
+                    <article class="card">
+                        <h3>FinTech Dashboard</h3>
+                        <p>Created an intuitive financial dashboard for investment tracking and portfolio management.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section" data-title="Price Plans">
+            <div class="container">
+                <h2>Price Plans</h2>
+                <p>Explore our pricing options to find the perfect fit for your business.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section" data-title="Contact Us">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p class="muted">Share your details and we’ll get back within 1 business day.</p>
+                <form id="contactForm" class="form">
+                    <div class="grid-2">
+                        <input type="text" id="name" placeholder="Your Name" required />
+                        <input type="email" id="email" placeholder="Your Email" required />
+                    </div>
+                    <input type="text" id="mobile" placeholder="Mobile Number" required />
+                    <textarea id="message" rows="4" placeholder="Tell us about your project"></textarea>
+                    <button type="submit" class="btn primary">Send Message</button>
+                    <p id="formMessage" class="muted"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Routivate. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

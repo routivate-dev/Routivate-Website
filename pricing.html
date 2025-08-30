@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routivate - Pricing</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- Moving 7-color gradient background layer -->
+    <div class="bg-layer"></div>
+<!-- Navbar -->
+    <header class="navbar">
+        <div class="brand">Routivate</div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+        
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-right">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="services.html">Services</a></li>
+                    <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                    <li><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li><a class="nav-link" href="about.html">About Us</a></li>
+                    <li><a class="nav-link active" href="pricing.html">Price Plans</a></li>
+                    <li><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="pricing-section">
+        <div class="container">
+            <h1 class="display">Choose Your Plan</h1>
+            <p class="lead">Select the perfect plan for your business needs. All plans include our premium support and quality service.</p>
+            
+            <!-- Pricing Toggle -->
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="pricing-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span>Annual (Save 20%)</span>
+            </div>
+
+            <!-- Pricing Plans Grid -->
+            <div class="plans-grid">
+                <!-- Basic Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Basic</h3>
+                        <div class="price">
+                            <span class="amount" data-monthly="$199" data-annual="$159">$199</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Perfect for small businesses getting started</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Website Maintenance</li>
+                        <li>✅ Email Support</li>
+                        <li>✅ Basic Analytics</li>
+                        <li>✅ 99.9% Uptime</li>
+                        <li>❌ SEO Optimization</li>
+                        <li>❌ Priority Support</li>
+                    </ul>
+                    <button class="btn outline">Get Started</button>
+                </div>
+
+                <!-- Professional Plan (Featured) -->
+                <div class="plan-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="amount" data-monthly="$499" data-annual="$399">$499</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Ideal for growing businesses</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Everything in Basic</li>
+                        <li>✅ Web Design & Development</li>
+                        <li>✅ SEO Optimization</li>
+                        <li>✅ Priority Support</li>
+                        <li>✅ Advanced Analytics</li>
+                        <li>✅ Custom Domain</li>
+                    </ul>
+                    <button class="btn">Get Started</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="amount" data-monthly="$999" data-annual="$799">$999</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">For large-scale operations</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Everything in Professional</li>
+                        <li>✅ Cloud & Security</li>
+                        <li>✅ Enterprise Consulting</li>
+                        <li>✅ Dedicated Support</li>
+                        <li>✅ Custom Integrations</li>
+                        <li>✅ 24/7 Monitoring</li>
+                    </ul>
+                    <button class="btn outline">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2>Trusted by Businesses Worldwide</h2>
+            <div class="trust-stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Uptime</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Routivate. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
