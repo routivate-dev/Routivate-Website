@@ -1,0 +1,135 @@
+/* Index Page Specific Styles */
+/* Hero section animations */
+.animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero stats */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Service cards on index page */
+.service-card {
+    text-align: center;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-progress {
+    margin-top: 1.5rem;
+    background-color: var(--bg-tertiary);
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: var(--progress-width, 0%);
+    border-radius: 10px;
+    transition: width 1.5s ease-out;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    mix-blend-mode: difference;
+}
+
+/* Testimonials carousel on index page */
+.testimonials-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonial {
+    display: none; /* Hidden by default */
+    padding: 2rem;
+}
+
+.testimonial.active {
+    display: block;
+}
+
+.carousel-controls {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.carousel-controls button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.carousel-controls button:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+#contactForm input,
+#contactForm textarea,
+#contactForm button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px; /* adjust this value as needed */
+    padding: 10px;
+    box-sizing: border-box;
+}

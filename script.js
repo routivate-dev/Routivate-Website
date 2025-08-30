@@ -506,3 +506,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+// Handle floating labels
+function initFloatingLabels() {
+    const formGroups = document.querySelectorAll('.form-group');
+    
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        const label = group.querySelector('label');
+        
+        if (input && label) {
+            // Check if input has value on page load
+            if (input.value.trim() !== '') {
+                label.classList.add('active');
+            }
+            
+            // Handle focus and blur events
+            input.addEventListener('focus', () => {
+                label.classList.add('active');
+            });
+            
+            input.addEventListener('blur', () => {
+                if (input.value.trim() === '') {
+                    label.classList.remove('active');
+                }
+            });
+            
+            // Handle input events
+            input.addEventListener('input', () => {
+                if (input.value.trim() !== '') {
+                    label.classList.add('active');
+                } else {
+                    label.classList.remove('active');
+                }
+            });
+        }
+    });
+}
+
+// Initialize floating labels when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initFloatingLabels();
+    // ... rest of your existing DOMContentLoaded code
+});
+
