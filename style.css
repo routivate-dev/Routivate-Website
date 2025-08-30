@@ -942,3 +942,211 @@ html[data-theme="dark"] .route-logo {
         font-size: 2.5rem;
     }
 }
+
+/* Enhanced CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-explore,
+.btn-get-started {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Explore Services Button - Outline Style */
+.btn-explore {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    backdrop-filter: blur(10px);
+}
+
+.btn-explore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.btn-explore:hover::before {
+    left: 0;
+}
+
+.btn-explore:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.3);
+    border-color: var(--primary);
+}
+
+.btn-explore .arrow {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.btn-explore:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Get Started Button - Filled Style */
+.btn-get-started {
+    background: linear-gradient(135deg, var(--accent) 0%, #f97316 100%);
+    color: white;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.btn-get-started::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-get-started:hover::before {
+    left: 100%;
+}
+
+.btn-get-started:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.btn-get-started .emoji {
+    transition: transform 0.3s ease;
+    font-size: 1.3rem;
+}
+
+.btn-get-started:hover .emoji {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Active states */
+.btn-explore:active,
+.btn-get-started:active {
+    transform: translateY(-1px);
+}
+
+/* Loading states */
+.btn-explore.loading,
+.btn-get-started.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-explore.loading::after,
+.btn-get-started.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    right: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dark theme adjustments */
+html[data-theme="dark"] .btn-explore {
+    background: rgba(15, 23, 42, 0.9);
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+}
+
+html[data-theme="dark"] .btn-explore::before {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+html[data-theme="dark"] .btn-explore:hover {
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.3);
+}
+
+html[data-theme="dark"] .btn-get-started {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .btn-explore,
+    .btn-get-started {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-explore,
+    .btn-get-started {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+        max-width: 280px;
+    }
+    
+    .btn-explore .arrow,
+    .btn-get-started .emoji {
+        font-size: 1.1rem;
+    }
+}
+
+/* Pulse animation for get started button */
+.btn-get-started {
+    animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+    }
+}
+
+.btn-get-started:hover {
+    animation: none;
+}
