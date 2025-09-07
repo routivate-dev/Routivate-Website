@@ -1,4 +1,48 @@
 /* ===============================
+   TRACKING FUNCTIONS
+================================= */
+const API_BASE_URL = 'http://localhost:5000/api'; // Change to deployed URL later
+
+function generateSessionId() {
+    return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+let sessionId = localStorage.getItem('routivate_session') || generateSessionId();
+localStorage.setItem('routivate_session', sessionId);
+
+async function trackInteraction(type, element = '', metadata = {}) {
+    try {
+        const data = {
+            type,
+            page: window.location.pathname,
+            element,
+            sessionId,
+            metadata
+        };
+
+        const response = await fetch(`${API_BASE_URL}/track`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            console.warn('Tracking failed:', response.status);
+        }
+    } catch (error) {
+        console.warn('Tracking error:', error);
+        // Store offline for later sync if needed
+    }
+}
+
+// Track page view on load
+document.addEventListener('DOMContentLoaded', () => {
+    trackInteraction('page_view');
+});
+
+/* ===============================
    MOBILE MENU TOGGLE
 ================================= */
 let mobileMenuToggle;
@@ -13,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const isOpen = navContainer.classList.contains('active');
         mobileMenuToggle.textContent = isOpen ? '✕' : '☰';
         document.body.style.overflow = isOpen ? 'hidden' : '';
+        trackInteraction('click', 'mobile-menu-toggle', { action: isOpen ? 'open' : 'close' });
     });
 });
 
@@ -77,6 +122,7 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("routivate_theme", next);
     themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
     routeFlash(); // show thunder when theme changes
+    trackInteraction('theme_change', 'theme-toggle', { theme: next });
 });
 
 /* ===============================
@@ -140,6 +186,7 @@ links.forEach(link => {
         const href = link.getAttribute("href");
         if (href.endsWith('.html')) {
             // Allow normal navigation for external pages
+            trackInteraction('click', 'nav-link', { href });
             window.location.href = href; // Allow navigation to HTML pages
             return;
         }
@@ -147,6 +194,8 @@ links.forEach(link => {
         const targetId = href.slice(1);
         const el = document.getElementById(targetId);
         if (!el) return;
+
+        trackInteraction('click', 'nav-link', { target: targetId });
 
         // Show flash, then scroll after the flash peaks
         routeFlash(() => {
@@ -216,8 +265,14 @@ function initTestimonialsCarousel() {
         showTestimonial(currentIndex);
     }
 
-    nextButton.addEventListener('click', nextTestimonial);
-    prevButton.addEventListener('click', prevTestimonial);
+    nextButton.addEventListener('click', () => {
+        nextTestimonial();
+        trackInteraction('click', 'carousel-next', { action: 'next' });
+    });
+    prevButton.addEventListener('click', () => {
+        prevTestimonial();
+        trackInteraction('click', 'carousel-prev', { action: 'prev' });
+    });
 
     // Autoplay functionality
     setInterval(nextTestimonial, 5000); // Change testimonial every 5 seconds
@@ -355,31 +410,32 @@ document.addEventListener("DOMContentLoaded", () => {
             const message = document.getElementById("message").value.trim();
 
             try {
-                // Simulate API call with timeout
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                const entry = { 
-                    name, 
-                    email, 
-                    mobile, 
-                    message, 
-                    at: new Date().toISOString() 
-                };
-                
-                const prev = JSON.parse(localStorage.getItem("routivate_contacts") || "[]");
-                prev.push(entry);
-                localStorage.setItem("routivate_contacts", JSON.stringify(prev));
+                const response = await fetch(`${API_BASE_URL}/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, mobile, message })
+                });
 
-                showMessage('✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-                form.reset();
-                
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    trackInteraction('form_submit', 'contact-form', { success: true });
+                    showMessage('✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                    form.reset();
+                } else {
+                    throw new Error(result.error || 'Failed to send message');
+                }
+
                 // Clear message after 5 seconds
                 setTimeout(() => {
                     const msg = document.getElementById("formMessage");
                     if (msg) msg.textContent = '';
                 }, 5000);
-                
+
             } catch (error) {
+                trackInteraction('form_submit', 'contact-form', { success: false, error: error.message });
                 showMessage('❌ Sorry, there was an error sending your message. Please try again.', 'error');
                 console.error('Form submission error:', error);
             } finally {
