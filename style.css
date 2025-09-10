@@ -186,6 +186,25 @@ html[data-theme="dark"] .navbar {
     font-size: 1.5rem;
 }
 
+/* Logo image styles */
+.brand-logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    transform: scale(1.05);
+}
+
+.route-logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.5));
+}
+
 .nav-container {
     display: flex;
     align-items: center;
