@@ -21,9 +21,9 @@ html[data-theme="dark"] .feature-card {
 
 :root {
     /* Modern color palette */
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --primary-light: #3b82f6;
+    --primary: #048c91;
+    --primary-dark: #036f7a;
+    --primary-light: #06a0a8;
     --secondary: #64748b;
     --accent: #f59e0b;
     --success: #10b981;
@@ -234,13 +234,13 @@ html[data-theme="dark"] .navbar {
 
 .nav-link:hover {
     color: var(--primary);
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(4, 140, 145, 0.08);
     transform: translateY(-1px);
 }
 
 .nav-link.active {
     color: var(--primary);
-    background: rgba(37, 99, 235, 0.12);
+    background: rgba(4, 140, 145, 0.12);
     font-weight: 600;
 }
 
@@ -522,7 +522,7 @@ html[data-theme="dark"] .nav-actions {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: linear-gradient(90deg, #048c91, #06a0a8, #0891b2);
     opacity: 0;
     transition: opacity 0.3s ease;
 }

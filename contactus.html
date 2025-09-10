@@ -18,7 +18,7 @@
 <body>
     <!-- Navbar -->
     <header class="navbar">
-        <img src="images/routivate.jpg" alt="Routivate Logo" class="brand-logo">
+        <img src="images/routivate.png" alt="Routivate Logo" class="brand-logo">
         
         <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
         
@@ -46,7 +46,7 @@
     <div class="bg-layer"></div>
 
     <!-- Contact Information Section -->
-    <section class="section" data-title="Contact Information">
+    <section class="section contact-info" data-title="Contact Information">
         <div class="container">
             <h1 class="display">Get in <span class="accent">Touch</span></h1>
             <p class="lead">We'd love to hear from you. Reach out through any of these channels or send us a message directly.</p>
@@ -85,21 +85,23 @@
                 <p class="lead" style="text-align: center; margin-bottom: 3rem;">Fill out the form below and we'll get back to you as soon as possible.</p>
                 
                 <form id="contactForm" class="form">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="John Doe" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <label for="email">Your Email</label>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" placeholder="Enter your email address" required>
-                    </div>
-                    <div class="form-group">
+                        <input type="tel" id="mobile" placeholder="+1 (555) 123-4567" required>
                         <label for="mobile">Mobile Number</label>
-                        <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
                     </div>
                     <div class="form-group">
+                        <textarea id="message" placeholder="Tell us about your project requirements, timeline, and how we can help you..." rows="5" required></textarea>
                         <label for="message">Your Message</label>
-                        <textarea id="message" placeholder="Tell us about your project or inquiry..." rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn primary">
                         <span class="btn-text">Send Message</span>

@@ -15,6 +15,11 @@
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
 }
 
 .contact-card::before {
@@ -24,7 +29,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: linear-gradient(90deg, #048c91, #06a0a8, #0891b2);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -72,12 +77,12 @@
 }
 
 .contact-form-section {
-    padding: 6rem 0;
+    padding: 4rem 0; /* Reduced from 6rem */
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .form-container {
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto;
 }
 
@@ -100,19 +105,23 @@
     font-size: 1.2rem;
 }
 
-/* Enhanced Modern Form Styling */
-.form {
-    max-width: 700px;
+/* Enhanced Modern Contact Form Styling */
+.contact-form-section .form {
+    max-width: 600px;
     margin: 0 auto;
-    padding: 3.5rem;
+    padding: 2.5rem;
     background: rgba(255, 255, 255, 0.98);
-    border-radius: 32px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
 }
 
 .form::before {
@@ -122,7 +131,7 @@
     left: 0;
     right: 0;
     height: 6px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background: linear-gradient(90deg, #048c91, #06a0a8, #0891b2, #048c91);
     background-size: 200% 100%;
     animation: shimmer 3s ease-in-out infinite;
 }
@@ -137,79 +146,94 @@
     transform: translateY(-3px);
 }
 
-/* Grid Layout for Form Fields */
-.form-grid {
+/* Row Layout for Form Fields */
+.form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
 }
 
 .form-group {
     position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Simplified Form Group Design */
+.form-group {
+    position: relative;
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
-
-/* Modern Floating Label Design */
 .form-group label {
     position: absolute;
-    top: 50%;
-    left: 1.5rem;
-    transform: translateY(-50%);
-    font-weight: 600;
-    color: var(--text-muted);
+    left: 1.25rem;
+    top: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 500;
     font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: transparent;
     pointer-events: none;
-    background: transparent;
-    padding: 0 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
+    padding: 0 0.25rem;
+    transform-origin: left center;
 }
 
-.form-group label.active,
+/* Floating label animation */
 .form-group input:focus + label,
 .form-group textarea:focus + label,
 .form-group input:not(:placeholder-shown) + label,
 .form-group textarea:not(:placeholder-shown) + label {
-    top: 0;
+    top: -0.5rem;
     left: 1rem;
     font-size: 0.875rem;
     color: var(--primary);
-    background: var(--bg-primary);
-    font-weight: 700;
-    transform: translateY(-50%);
+    background-color: var(--bg-primary);
+    font-weight: 600;
+    padding: 0 0.5rem;
 }
 
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-    top: 0;
-}
+
 
 /* Enhanced Input Styling */
 .form input,
 .form textarea {
     width: 100%;
-    padding: 1.5rem 1.75rem;
-    border-radius: 20px;
+    padding: 1.2rem 1.25rem;
+    border-radius: 16px;
     border: 2px solid #e2e8f0;
     background: rgba(255, 255, 255, 0.98);
-    font-size: 1.1rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     font-family: inherit;
     line-height: 1.5;
     color: var(--text-primary);
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
     color: transparent;
+    opacity: 0;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+/* Show placeholder only when focused */
+.form input:focus::placeholder,
+.form textarea:focus::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
 }
 
 .form input:focus,
@@ -224,7 +248,41 @@
 .form textarea {
     min-height: 140px;
     resize: vertical;
-    padding-top: 1.75rem;
+    padding-top: 1.2rem;
+}
+
+/* Special handling for textarea labels */
+.form-group:has(textarea) label {
+    top: 1.2rem;
+}
+
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.5rem;
+}
+
+/* Input validation states */
+.form input:invalid:not(:focus):not(:placeholder-shown),
+.form textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--error);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.form input:valid:not(:focus):not(:placeholder-shown),
+.form textarea:valid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--success);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+/* Validation label colors */
+.form-group input:invalid:not(:focus):not(:placeholder-shown) + label,
+.form-group textarea:invalid:not(:focus):not(:placeholder-shown) + label {
+    color: var(--error);
+}
+
+.form-group input:valid:not(:focus):not(:placeholder-shown) + label,
+.form-group textarea:valid:not(:focus):not(:placeholder-shown) + label {
+    color: var(--success);
 }
 
 /* Enhanced Button Styling */
@@ -305,7 +363,7 @@
 
 /* Social Section */
 .social-section {
-    padding: 6rem 0;
+    padding: 4rem 0; /* Reduced from 6rem */
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     text-align: center;
 }
@@ -330,8 +388,11 @@
 .social-links {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .social-link {
@@ -387,13 +448,12 @@ html[data-theme="dark"] .form-group label {
     color: var(--text-muted);
 }
 
-html[data-theme="dark"] .form-group label.active,
 html[data-theme="dark"] .form-group input:focus + label,
 html[data-theme="dark"] .form-group textarea:focus + label,
 html[data-theme="dark"] .form-group input:not(:placeholder-shown) + label,
 html[data-theme="dark"] .form-group textarea:not(:placeholder-shown) + label {
     color: var(--primary-light);
-    background: rgba(15, 23, 42, 0.95);
+    background: var(--bg-primary);
 }
 
 html[data-theme="dark"] .form input,
@@ -425,44 +485,94 @@ html[data-theme="dark"] .social-link:hover {
 @media (max-width: 768px) {
     .contact-card {
         padding: 2rem 1.5rem;
+        min-height: 250px;
     }
-    
+
     .contact-icon {
         font-size: 3rem;
     }
-    
+
     .form {
         padding: 2.5rem 2rem;
         margin: 0 1rem;
         border-radius: 24px;
+        width: calc(100% - 2rem);
+        max-width: none;
     }
-    
-    .form-grid {
+
+    .form-row {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .form input,
-    .form textarea,
+    .form textarea {
+        padding: 1.25rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+    
     .form button {
         padding: 1.25rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .form button {
         font-size: 1.1rem;
+        border-radius: 16px;
     }
     
+    .form-group label {
+        font-size: 0.95rem;
+    }
+    
+    .form-group input:focus + label,
+    .form-group textarea:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+        font-size: 0.8rem;
+    }
+
     .social-links {
         gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
     }
-    
+
     .social-link {
         padding: 1rem 1.5rem;
         font-size: 1rem;
+        flex: 1 1 auto;
+        justify-content: center;
+        min-width: 120px;
     }
-    
+
     .social-link span {
         font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 1.5rem 1rem;
+        min-height: 220px;
+    }
+
+    .contact-icon {
+        font-size: 2.5rem;
+    }
+
+    .form {
+        padding: 2rem 1.5rem;
+        margin: 0 0.5rem;
+        width: calc(100% - 1rem);
+    }
+
+    .social-links {
+        gap: 0.75rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-link {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
     }
 }
