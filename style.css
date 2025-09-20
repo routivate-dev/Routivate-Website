@@ -667,11 +667,11 @@ html[data-theme="dark"] .mobile-menu-toggle:hover {
         z-index: 1002;
     }
 
-    .nav-right:not(.active) {
+    .nav-container:not(.active) .nav-right {
         display: none;
     }
 
-    .nav-actions:not(.active) {
+    .nav-container:not(.active) .nav-actions {
         display: none;
     }
 }
