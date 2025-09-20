@@ -361,10 +361,6 @@ html[data-theme="dark"] .navbar {
     border-radius: 50%;
 }
 
-.nav-link.active::before {
-    animation: pulse 2s infinite;
-}
-
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
