@@ -371,7 +371,7 @@ html[data-theme="dark"] .nav-link::before {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.20rem;
     list-style: none;
     margin: 0;
     padding: 0;
