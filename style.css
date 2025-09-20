@@ -258,19 +258,73 @@ html[data-theme="dark"] .bg-layer {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.92);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.25rem 2.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 html[data-theme="dark"] .navbar {
-    background: rgba(15, 23, 42, 0.92);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.85) 100%);
     border-bottom-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Nav Icon Styles */
+.nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+/* Ripple Effect for Nav Links */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.nav-link:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+html[data-theme="dark"] .nav-link::before {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Focus States for Accessibility */
+.nav-link:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .brand {
@@ -325,40 +379,132 @@ html[data-theme="dark"] .navbar {
 
 .nav-link {
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-secondary);
-    padding: 0.5rem 0.75rem;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.75rem 1.25rem;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     font-size: 0.95rem;
     position: relative;
     white-space: nowrap;
+    letter-spacing: 0.025em;
+    backdrop-filter: blur(10px);
+    border: 1px solid transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+/* Ripple effect */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(4, 140, 145, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.nav-link:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Focus states for accessibility */
+.nav-link:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-color: var(--primary);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.mobile-menu-toggle:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(4, 140, 145, 0.1) 0%, rgba(4, 140, 145, 0.05) 100%);
+    transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+    border-radius: 16px;
+}
+
+.nav-link:hover::before {
+    left: 0;
 }
 
 .nav-link:hover {
     color: var(--primary);
-    background: rgba(4, 140, 145, 0.08);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(4, 140, 145, 0.15);
+    border-color: rgba(4, 140, 145, 0.2);
 }
 
 .nav-link.active {
     color: var(--primary);
-    background: rgba(4, 140, 145, 0.25);
-    font-weight: 600;
-    border-bottom: 3px solid var(--primary);
-    box-shadow: 0 2px 8px rgba(4, 140, 145, 0.3);
+    font-weight: 700;
+    border-color: rgba(4, 140, 145, 0.3);
 }
 
-.nav-link.active::before {
+
+
+.nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -2px;
     left: 50%;
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
     background: var(--primary);
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(4, 140, 145, 0.6);
+    animation: activePulse 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes activePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 10px rgba(4, 140, 145, 0.6);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.2);
+        box-shadow: 0 0 15px rgba(4, 140, 145, 0.8);
+    }
 }
 
 @keyframes pulse {
@@ -423,10 +569,10 @@ html[data-theme="dark"] .nav-actions {
     .nav-right {
         gap: 1rem;
     }
-    
+
     .nav-link {
         font-size: 0.9rem;
-        padding: 0.4rem 0.6rem;
+        padding: 0.6rem 1rem;
     }
 }
 
@@ -434,7 +580,7 @@ html[data-theme="dark"] .nav-actions {
     .navbar {
         padding: 1rem;
     }
-    
+
     .nav-container {
         position: fixed;
         top: 70px;
@@ -450,36 +596,48 @@ html[data-theme="dark"] .nav-actions {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
-    
+
     html[data-theme="dark"] .nav-container {
         background: rgba(15, 23, 42, 0.98);
         border-bottom-color: rgba(255, 255, 255, 0.1);
     }
-    
+
     .nav-container.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
-    
+
     .nav-right {
         flex-direction: column;
         gap: 0.5rem;
         width: 100%;
     }
-    
+
     .nav-link {
         width: 100%;
         text-align: center;
         padding: 1rem;
-        border-radius: 12px;
+        border-radius: 16px;
         font-size: 1rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid transparent;
     }
-    
+
     .nav-link:hover {
-        background: rgba(37, 99, 235, 0.1);
+        background: linear-gradient(135deg, rgba(4, 140, 145, 0.1) 0%, rgba(4, 140, 145, 0.05) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(4, 140, 145, 0.15);
     }
-    
+
+    .nav-link.active {
+        color: var(--primary);
+        font-weight: 700;
+        background: rgba(4, 140, 145, 0.08);
+        border-color: rgba(4, 140, 145, 0.4);
+        box-shadow: 0 2px 8px rgba(4, 140, 145, 0.2);
+    }
+
     .nav-actions {
         border-left: none;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -490,19 +648,19 @@ html[data-theme="dark"] .nav-actions {
         width: 100%;
         justify-content: center;
     }
-    
+
     html[data-theme="dark"] .nav-actions {
         border-top-color: rgba(255, 255, 255, 0.15);
     }
-    
+
     .mobile-menu-toggle {
         display: block;
     }
-    
+
     .nav-right:not(.active) {
         display: none;
     }
-    
+
     .nav-actions:not(.active) {
         display: none;
     }
