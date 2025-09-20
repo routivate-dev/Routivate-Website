@@ -1,4 +1,20 @@
 /* ===============================
+   SET ACTIVE NAV LINK
+================================= */
+function setActiveNavLink() {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html'; // Default to index.html if root
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+            link.classList.add('active');
+        }
+    });
+}
+
+/* ===============================
    TRACKING FUNCTIONS
 ================================= */
 const API_BASE_URL = 'http://localhost:5000/api'; // Change to deployed URL later
@@ -40,6 +56,7 @@ async function trackInteraction(type, element = '', metadata = {}) {
 // Track page view on load
 document.addEventListener('DOMContentLoaded', () => {
     trackInteraction('page_view');
+    setActiveNavLink(); // Set active nav link based on current page
 });
 
 /* ===============================
@@ -146,7 +163,7 @@ function routeFlash(callback) {
 /* ===============================
    SCROLL-SPY + TITLE SYNC
 ================================= */
-const links = document.querySelectorAll(".nav-link");
+const links = document.querySelectorAll(".nav-link:not([href$='.html'])");
 const sections = [...document.querySelectorAll("section.section")];
 
 // Map id -> link
