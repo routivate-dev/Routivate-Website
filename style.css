@@ -122,6 +122,10 @@ html[data-theme="dark"] .feature-card {
     border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
 }
 
+html[data-theme="light"] .feature {
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Darker border for visibility in light theme */
+}
+
 html[data-theme="dark"] .feature {
     background: rgba(15, 23, 42, 0.9); /* Dark background for feature cards */
     border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
