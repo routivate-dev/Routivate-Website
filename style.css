@@ -122,6 +122,11 @@ html[data-theme="dark"] .feature-card {
     border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
 }
 
+html[data-theme="dark"] .feature {
+    background: rgba(15, 23, 42, 0.9); /* Dark background for feature cards */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+}
+
 :root {
     /* Modern color palette */
     --primary: #048c91;
@@ -534,6 +539,10 @@ html[data-theme="dark"] .nav-actions {
     background: rgba(0, 0, 0, 0.1);
 }
 
+html[data-theme="dark"] .mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* Mobile Navigation */
 @media (max-width: 1024px) {
     .nav-right {
@@ -553,70 +562,96 @@ html[data-theme="dark"] .nav-actions {
 
     .nav-container {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.98);
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 1rem;
-        transform: translateY(-100%);
+        transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
     }
 
     html[data-theme="dark"] .nav-container {
-        background: rgba(15, 23, 42, 0.98);
-        border-bottom-color: rgba(255, 255, 255, 0.1);
+        background: rgba(15, 23, 42, 0.95);
     }
 
     .nav-container.active {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
     }
 
     .nav-right {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 2rem;
         width: 100%;
+        max-width: 300px;
+        align-items: center;
     }
 
     .nav-link {
         width: 100%;
         text-align: center;
-        padding: 1rem;
+        padding: 1.5rem 2rem;
         border-radius: 16px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         backdrop-filter: blur(10px);
-        border: 1px solid transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--text-primary);
+        transition: all 0.3s ease;
     }
 
     .nav-link:hover {
-        background: linear-gradient(135deg, rgba(4, 140, 145, 0.1) 0%, rgba(4, 140, 145, 0.05) 100%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 15px rgba(4, 140, 145, 0.15);
+        background: rgba(4, 140, 145, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(4, 140, 145, 0.2);
+        border-color: rgba(4, 140, 145, 0.3);
     }
 
     .nav-link.active {
         color: var(--primary);
         font-weight: 700;
-        background: rgba(4, 140, 145, 0.08);
+        background: rgba(4, 140, 145, 0.3);
         border-color: rgba(4, 140, 145, 0.4);
-        box-shadow: 0 2px 8px rgba(4, 140, 145, 0.2);
+        box-shadow: 0 4px 15px rgba(4, 140, 145, 0.3);
+    }
+
+    html[data-theme="dark"] .nav-link {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+    }
+
+    html[data-theme="dark"] .nav-link:hover {
+        background: rgba(4, 140, 145, 0.2);
+    }
+
+    html[data-theme="dark"] .nav-link.active {
+        background: rgba(4, 140, 145, 0.2);
     }
 
     .nav-actions {
         border-left: none;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
-        padding-top: 1rem;
-        margin-top: 1rem;
+        padding-top: 2rem;
+        margin-top: 2rem;
         padding-left: 0;
         margin-left: 0;
         width: 100%;
+        max-width: 300px;
         justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     html[data-theme="dark"] .nav-actions {
@@ -625,6 +660,7 @@ html[data-theme="dark"] .nav-actions {
 
     .mobile-menu-toggle {
         display: block;
+        z-index: 1002;
     }
 
     .nav-right:not(.active) {
