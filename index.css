@@ -50,6 +50,22 @@
     overflow: hidden;
 }
 
+/* Service features list styling */
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    text-align: left;
+}
+
+.service-features li {
+    margin: 0.25rem 0;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
 .service-card::before {
     content: '';
     position: absolute;
@@ -69,6 +85,36 @@
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
+}
+
+.service-card .learn-more {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card .learn-more:hover {
+    color: var(--primary-dark);
+    transform: translateX(4px);
+}
+
+.service-card .learn-more::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.service-card .learn-more:hover::after {
+    width: 100%;
 }
 
 .service-icon {
@@ -551,6 +597,14 @@ html[data-theme="dark"] .service-card:hover {
 
 html[data-theme="dark"] .service-card .learn-more {
     color: var(--primary-light) !important;
+}
+
+html[data-theme="dark"] .service-card .learn-more:hover {
+    color: #06a0a8 !important;
+}
+
+html[data-theme="dark"] .service-features li {
+    color: #94a3b8 !important;
 }
 
 /* Dark theme styles for testimonial cards */
