@@ -246,12 +246,16 @@ function initTestimonialsCarousel() {
     const testimonials = document.querySelectorAll('.testimonial');
     const nextButton = document.querySelector('.carousel-next');
     const prevButton = document.querySelector('.carousel-prev');
-    
+
     let currentIndex = 0;
 
     function showTestimonial(index) {
         testimonials.forEach((testimonial, i) => {
-            testimonial.style.display = (i === index) ? 'block' : 'none';
+            if (i === index) {
+                testimonial.classList.add('active');
+            } else {
+                testimonial.classList.remove('active');
+            }
         });
     }
 
@@ -259,7 +263,7 @@ function initTestimonialsCarousel() {
         currentIndex = (currentIndex + 1) % testimonials.length;
         showTestimonial(currentIndex);
     }
-    
+
     function prevTestimonial() {
         currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
         showTestimonial(currentIndex);
@@ -603,6 +607,177 @@ function initFloatingLabels() {
 // Initialize floating labels when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initFloatingLabels();
+    initScrollAnimations();
+    initParticleSystem();
+    initParallaxEffect();
+    initProgressiveReveals();
+    initSectionReveals();
+    initFloatingElements();
     // ... rest of your existing DOMContentLoaded code
 });
+
+// ===========================================
+// ADVANCED ANIMATION SYSTEM
+// ===========================================
+
+// Parallax scrolling effect
+function initParallaxEffect() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    let ticking = false;
+
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+
+        // Apply parallax to different layers
+        const parallaxLayers = heroSection.querySelectorAll('.parallax-layer-1, .parallax-layer-2, .parallax-layer-3');
+        parallaxLayers.forEach(layer => {
+            const speed = layer.classList.contains('parallax-layer-1') ? 0.5 :
+                         layer.classList.contains('parallax-layer-2') ? 0.3 : 0.1;
+            layer.style.setProperty('--parallax-y', `${scrolled * speed}px`);
+        });
+
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
+
+// Progressive reveal animations
+function initProgressiveReveals() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                }, index * 100); // Stagger the reveals
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.progressive-reveal').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Enhanced section reveals
+function initSectionReveals() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-reveal-left, .section-reveal-right, .section-reveal-up, .section-reveal-scale').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Intersection Observer for scroll-triggered animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with animation classes
+    document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .animate-on-scroll-scale, .animate-on-scroll-rotate').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Floating elements system
+function initFloatingElements() {
+    const floatingContainer = document.querySelector('.floating-elements');
+    if (!floatingContainer) return;
+
+    const elements = ['⚡', '🚀', '💡', '🌟', '🔥'];
+    const numElements = 8;
+
+    for (let i = 0; i < numElements; i++) {
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        element.textContent = elements[i % elements.length];
+        element.style.left = Math.random() * 90 + '%';
+        element.style.top = Math.random() * 90 + '%';
+        element.style.fontSize = Math.random() * 20 + 20 + 'px';
+        element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        element.style.animationDelay = Math.random() * 5 + 's';
+
+        floatingContainer.appendChild(element);
+    }
+}
+
+// Particle system for hero background
+function initParticleSystem() {
+    const heroParticles = document.querySelector('.hero-particles');
+    if (!heroParticles) return;
+
+    const particleCount = 20;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = Math.random() * 4 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+
+        heroParticles.appendChild(particle);
+    }
+}
+
+// Typing effect for hero title (if needed)
+function initTypingEffect() {
+    const typingElement = document.querySelector('.typing-effect');
+    if (!typingElement) return;
+
+    const text = typingElement.textContent;
+    typingElement.textContent = '';
+    typingElement.style.borderRight = '2px solid var(--primary)';
+
+    let i = 0;
+    const timer = setInterval(() => {
+        if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(timer);
+            setTimeout(() => {
+                typingElement.style.borderRight = 'none';
+            }, 500);
+        }
+    }, 100);
+}
 

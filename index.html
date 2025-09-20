@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="animations.css" />
     <script defer src="script.js"></script>
 </head>
 
@@ -49,37 +50,39 @@
     <main>
         <section id="home" class="section hero" data-title="Home">
             <div class="hero-background">
-                <div class="hero-particles"></div>
+                <div class="parallax-bg parallax-layer-1"></div>
+                <div class="hero-particles parallax-layer-2"></div>
+                <div class="floating-elements parallax-layer-3"></div>
                 <div class="hero-overlay"></div>
             </div>
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="display animate-text" data-animation="fadeInUp" data-delay="0.2s">
+                    <h1 class="display animate-text section-reveal-up" data-animation="fadeInUp" data-delay="0.2s">
                         Welcome to <span class="accent">Routivate</span>
                     </h1>
-                    <p class="lead animate-text" data-animation="fadeInUp" data-delay="0.4s">
+                    <p class="lead animate-text section-reveal-up" data-animation="fadeInUp" data-delay="0.4s">
                         Your Website. Delivered in 48 Hours. Guaranteed. Empowering businesses with modern, scalable IT solutions.
                     </p>
-                    <div class="cta-buttons">
-                        <button onclick="window.location.href='services.html'" class="btn-explore">
+                    <div class="cta-buttons section-reveal-scale">
+                        <button onclick="window.location.href='services.html'" class="btn-explore btn-ripple btn-hover-lift">
                             <span>Explore Services</span>
-                            <span class="arrow">→</span>
+                            <span class="arrow icon-hover-bounce">→</span>
                         </button>
-                        <button onclick="window.location.href='contactus.html'" class="btn-get-started">
+                        <button onclick="window.location.href='contactus.html'" class="btn-get-started btn-ripple btn-hover-lift btn-glow">
                             <span>Get Started</span>
-                            <span class="emoji">📧</span>
+                            <span class="emoji icon-hover-pulse">📧</span>
                         </button>
                     </div>
-                    <div class="hero-stats animate-text" data-animation="fadeInUp" data-delay="0.8s">
-                        <div class="stat">
+                    <div class="hero-stats animate-text section-reveal-up" data-animation="fadeInUp" data-delay="0.8s">
+                        <div class="stat progressive-reveal delay-1">
                             <span class="stat-number" data-count="150">0</span>
                             <span class="stat-label">Projects Completed</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat progressive-reveal delay-2">
                             <span class="stat-number" data-count="98">0</span>
                             <span class="stat-label">Client Satisfaction</span>
                         </div>
-                        <div class="stat">
+                        <div class="stat progressive-reveal delay-3">
                             <span class="stat-number" data-count="48">0</span>
                             <span class="stat-label">Hour Delivery</span>
                         </div>
@@ -97,8 +100,8 @@
 
                 <!-- Main Service Categories -->
                 <div class="grid-3">
-                    <article class="service-card main-service" onclick="window.location.href='services.html#48hour-delivery'" style="cursor: pointer;">
-                        <div class="service-icon-large">⚡</div>
+                    <article class="service-card main-service card-entrance-stagger animate-stagger-1" onclick="window.location.href='services.html#48hour-delivery'" style="cursor: pointer;">
+                        <div class="service-icon-large icon-hover-bounce">⚡</div>
                         <h3>48-Hour MVP Delivery</h3>
                         <p>Complete website development and deployment within 48 hours - the fastest in the market.</p>
                         <ul class="service-features">
@@ -109,8 +112,8 @@
                         </ul>
                         <div class="learn-more">Click to learn more →</div>
                     </article>
-                    <article class="service-card main-service" onclick="window.location.href='services.html#development-services'" style="cursor: pointer;">
-                        <div class="service-icon-large">🛠️</div>
+                    <article class="service-card main-service card-entrance-stagger animate-stagger-2" onclick="window.location.href='services.html#development-services'" style="cursor: pointer;">
+                        <div class="service-icon-large icon-hover-rotate">🛠️</div>
                         <h3>Development Services</h3>
                         <p>Full-stack development solutions using modern technologies and best practices.</p>
                         <ul class="service-features">
@@ -121,8 +124,8 @@
                         </ul>
                         <div class="learn-more">Click to learn more →</div>
                     </article>
-                    <article class="service-card main-service" onclick="window.location.href='services.html#it-services'" style="cursor: pointer;">
-                        <div class="service-icon-large">🖥️</div>
+                    <article class="service-card main-service card-entrance-stagger animate-stagger-3" onclick="window.location.href='services.html#it-services'" style="cursor: pointer;">
+                        <div class="service-icon-large icon-hover-pulse">🖥️</div>
                         <h3>IT Services & Management</h3>
                         <p>Comprehensive IT infrastructure management and strategic technology guidance.</p>
                         <ul class="service-features">
@@ -423,27 +426,27 @@
 
                         <form id="contactForm" class="enhanced-form">
                             <div class="form-row">
-                                <div class="form-group">
+                                <div class="form-group form-field-focus">
                                     <input type="text" id="name" placeholder="John Doe" required />
                                     <label for="name">Your Name</label>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group form-field-focus">
                                     <input type="email" id="email" placeholder="john@example.com" required />
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group form-field-focus">
                                 <input type="tel" id="mobile" placeholder="+1 (555) 123-4567" required />
                                 <label for="mobile">Mobile Number</label>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group form-field-focus">
                                 <textarea id="message" rows="4" placeholder="Tell us about your project requirements, timeline, and how we can help you..." required></textarea>
                                 <label for="message">Tell us about your project</label>
                             </div>
 
-                            <button type="submit" class="btn primary enhanced-btn">
+                            <button type="submit" class="btn primary enhanced-btn btn-ripple btn-hover-lift">
                                 <span class="btn-text">🚀 Send Message</span>
                                 <span class="btn-loading" style="display: none;">
                                     <span class="spinner"></span>
